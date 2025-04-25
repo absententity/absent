@@ -20,96 +20,79 @@
 
     .container {
       text-align: center;
-      max-width: 600px;
+      max-width: 100%;
       padding: 1rem;
+      overflow: hidden;
+      min-width: 0;
     }
 
-    h1 {
-  font-size: 2.5rem;
-  letter-spacing: 0.15em;
-  margin-bottom: 1rem;
-  position: relative;
-  animation: glitch 1s infinite;
-}
+    #top-line {
+      font-size: 2rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .entry-prompt, input[type="text"], button {
+      opacity: 1;
+      transition: none;
+    }
 
     .entry-prompt {
       font-size: 1rem;
       color: #999;
       margin-bottom: 2rem;
+      height: 1.5rem;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     input[type="text"] {
-  background: #0b0b0b;
-  color: #8B0000;
-  border: none;
-  border-bottom: 1px solid #666;
-  padding: 0.75rem;
-  width: 100%;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  letter-spacing: 0.05em;
-  text-align: center;
-  outline: none;
-  caret-color: #8B0000;
-  animation: flicker 1.5s infinite alternate;
-}
-
-@keyframes flicker {
-  0% { opacity: 1; }
-  45% { opacity: 0.6; }
-  70% { opacity: 0.85; }
-  100% { opacity: 1; }
-}
+      background: #0b0b0b;
+      color: #8B0000;
+      border: none;
+      border-bottom: 1px solid #666;
+      padding: 0.75rem;
+      width: 100%;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-align: center;
+      outline: none;
+      caret-color: #8B0000;
+    }
 
     button {
-  background: #0b0b0b;
-  border: 1px solid #666;
-  color: #f4f4f4;
-  padding: 0.5rem 1.5rem;
-  cursor: pointer;
-  animation: flicker 1.5s infinite alternate;
-}
+      background: #0b0b0b;
+      border: 1px solid #666;
+      color: #f4f4f4;
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+    }
 
     .error {
       color: crimson;
       display: none;
       margin-top: 1rem;
     }
-  @keyframes glitch {
-  0% {
-    text-shadow: 2px 0 red, -2px 0 cyan;
-  }
-  20% {
-    text-shadow: -2px 0 red, 2px 0 cyan;
-  }
-  40% {
-    text-shadow: 2px 2px red, -2px -2px cyan;
-  }
-  60% {
-    text-shadow: -1px -1px red, 1px 1px cyan;
-  }
-  80% {
-    text-shadow: 1px -1px red, -1px 1px cyan;
-  }
-  100% {
-    text-shadow: none;
-  }
-}
-</style>
+
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>ABSENT CODE</h1>
-    
-    
-    <div class="entry-prompt">if you were never meant to be here, the gate will remain closed.</div>
+    <div id="top-line">
+      <span id="static">⟴ </span><span id="signal">signal trace: unstable.</span>
+    </div>
+    <div class="entry-prompt" id="prompt">you were not invited. you simply stayed too long.</div>
     <input type="text" id="phraseInput" placeholder="">
-    <button onclick="validatePhrase()"></button>
-  </div>
+    <button onclick="validatePhrase()">submit</button>
   </div>
 
   <script>
     const phrase = "this is not a request";
+
     function validatePhrase() {
       const userInput = document.getElementById('phraseInput').value.trim();
       if (userInput === phrase) {
@@ -122,11 +105,5 @@
       }
     }
   </script>
-<p style="position: absolute; bottom: 5px; width: 100%; text-align: center; font-size: 0.7rem; color: #333;">
-      this site operates under a selective visibility model. not all services are visible to all users.
-    </p>
-<p style="position: absolute; bottom: 25px; width: 100%; text-align: center; font-size: 0.75rem; color: #444;">
-  Absent Code provides access to digital services through symbolic gateways and fixed-price interactions. All offerings are final. No refunds.
-</p>
 </body>
 </html>
