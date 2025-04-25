@@ -1,4 +1,3 @@
-<!-- ABSENT ENTITY — Tribute Filter Portal -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,28 +10,24 @@
       background-color: #0b0b0b;
       color: #f4f4f4;
       font-family: 'Courier New', monospace;
-      overflow: hidden;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 2rem;
     }
 
     .container {
       text-align: center;
-      max-width: 100%;
-      padding: 1rem;
-      overflow: hidden;
-      min-width: 0;
+      width: 100%;
+      max-width: 600px;
     }
 
     #top-line {
       font-size: 2rem;
       letter-spacing: 0.1em;
       margin-bottom: 1rem;
-      position: relative;
-      display: inline-block;
-      white-space: nowrap;
     }
 
     .entry-prompt, input[type="text"], button {
@@ -44,9 +39,6 @@
       font-size: 1rem;
       color: #999;
       margin-bottom: 2rem;
-      height: 1.5rem;
-      overflow: hidden;
-      white-space: nowrap;
     }
 
     input[type="text"] {
@@ -72,12 +64,37 @@
       cursor: pointer;
     }
 
-    .error {
-      color: crimson;
+    .tiers {
+      margin-top: 2rem;
       display: none;
-      margin-top: 1rem;
+      flex-direction: column;
+      align-items: center;
     }
 
+    .tier {
+      margin: 12px 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      background-color: #222;
+      padding: 10px 18px;
+      border: 1px solid #444;
+      border-radius: 3px;
+      font-size: 14px;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: #444;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-size: 11px;
+      color: #555;
+    }
   </style>
 </head>
 <body>
@@ -88,6 +105,28 @@
     <div class="entry-prompt" id="prompt">you were not invited. you simply stayed too long.</div>
     <input type="text" id="phraseInput" placeholder="">
     <button onclick="validatePhrase()">submit</button>
+
+    <div class="tiers" id="tiers">
+      <h1>you crossed the threshold. payment is now owed.</h1>
+      <div class="tier">
+        <a href="https://buy.stripe.com/8wMdUM82L5DC5Og002">[intake 001]</a>
+      </div>
+      <div class="tier">
+        <a href="https://buy.stripe.com/14k1803Mvfec2C48wz">[deconstruct 004]</a>
+      </div>
+      <div class="tier">
+        <a href="https://buy.stripe.com/4gwg2U96P8POgsUeUY">[breach node 007]</a>
+      </div>
+      <div class="tier">
+        <a href="https://buy.stripe.com/fZeaIA4Qz9TS5OgdQV">[threshold issued]</a>
+      </div>
+      <div class="tier">
+        <a href="https://buy.stripe.com/fZebME82L3vuekM006">[silent stream]</a>
+      </div>
+      <div class="footer">
+        regret is not a recognized protocol.
+      </div>
+    </div>
   </div>
 
   <script>
@@ -96,9 +135,13 @@
     function validatePhrase() {
       const userInput = document.getElementById('phraseInput').value.trim();
       if (userInput === phrase) {
-        window.location.href = "tribute.html";
+        document.getElementById('phraseInput').style.display = 'none';
+        document.querySelector('button').style.display = 'none';
+        document.getElementById('prompt').style.display = 'none';
+        document.getElementById('top-line').style.display = 'none';
+        document.getElementById('tiers').style.display = 'flex';
       } else {
-        alert("You were seen. You were weighed. You were denied.");
+        alert("you were seen. you were weighed. you were denied.");
         document.body.innerHTML = "";
         document.body.style.backgroundColor = "black";
         setTimeout(() => window.close(), 500);
